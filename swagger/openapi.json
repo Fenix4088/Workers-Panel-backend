@@ -1,0 +1,392 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "test API",
+    "version": "v1",
+    "description": "header === body",
+    "contact": {
+      "email": "kachanovski03@gmail.com",
+      "name": "Alexander Kachanovski"
+    }
+  },
+  "externalDocs": {
+    "url": "/"
+  },
+  "servers": [
+    {
+      "url": "https://trello-clone-back.herokuapp.com/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "auth"
+    },
+    {
+      "name": "workers"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "summary": "login",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [
+          {
+            "name": "data",
+            "in": "header",
+            "required": true,
+            "description": "Data for Login",
+            "schema": {
+              "type": "object",
+              "example": {
+                "email": "string",
+                "password": "string",
+                "rememberMe": false
+              }
+            }
+          }
+        ],
+        "description": "Parameters",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "resultCode": 0,
+                    "data": {
+                      "email": "string",
+                      "userName": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "summary": "register",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [
+          {
+            "name": "data",
+            "in": "header",
+            "required": true,
+            "description": "data for register",
+            "schema": {
+              "type": "object",
+              "example": {
+                "email": "string",
+                "password": "string"
+              }
+            }
+          }
+        ],
+        "description": "Parameters",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "example": {
+                    "resultCode": 0,
+                    "message": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "post": {
+        "summary": "authMe",
+        "tags": [
+          "auth"
+        ],
+        "description": "Parameters",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "resultCode": 0,
+                    "data": {
+                      "id": "string",
+                      "email": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "delete": {
+        "summary": "logOut",
+        "tags": [
+          "auth"
+        ],
+        "description": "Parameters",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "resultCode": 0,
+                    "message": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workers": {
+      "get": {
+        "summary": "getWorkers",
+        "tags": [
+          "workers"
+        ],
+        "description": "Parameters",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "resultCode": 0,
+                    "data": {
+                      "workers": [
+                        {
+                          "_id": "string",
+                          "fullName": "string",
+                          "gender": "string",
+                          "contacts": "string",
+                          "salary": "string",
+                          "position": "string",
+                          "createdAt": "string",
+                          "updatedAt": "string"
+                        }
+                      ],
+                      "count": "count teams"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "createWorker",
+        "tags": [
+          "workers"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "header",
+            "required": true,
+            "description": "worker data",
+            "schema": {
+              "type": "object",
+              "example": {
+                "fullName": "string",
+                "gender": "string",
+                "contacts": "string",
+                "salary": "string",
+                "position": "string",
+                "createdAt": "string",
+                "updatedAt": "string"
+              }
+            }
+          }
+        ],
+        "description": "Parameters",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "resultCode": 0,
+                    "message": "Team created"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workers/{id)": {
+      "delete": {
+        "summary": "deleteWorker",
+        "tags": [
+          "workers"
+        ],
+        "parameters": [
+          {
+            "name": "worker_id",
+            "in": "path",
+            "required": true,
+            "description": "worker_id",
+            "schema": {
+              "type": "string",
+              "example": "worker_id"
+            }
+          }
+        ],
+        "description": "Parameters",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "resultCode": 0,
+                    "message": "Worker deleted"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "updateWorker",
+        "tags": [
+          "workers"
+        ],
+        "parameters": [
+          {
+            "name": "worker_id",
+            "in": "path",
+            "required": true,
+            "description": "worker_id",
+            "schema": {
+              "type": "string",
+              "example": "worker_id"
+            }
+          },
+          {
+            "name": "worker data",
+            "in": "header",
+            "required": true,
+            "description": "worker data",
+            "schema": {
+              "type": "object",
+              "example": {
+                "fullName": "string",
+                "gender": "string",
+                "contacts": "string",
+                "salary": "string",
+                "position": "string",
+                "createdAt": "string",
+                "updatedAt": "string"
+              }
+            }
+          }
+        ],
+        "description": "Parameters",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "resultCode": 0,
+                    "message": "Worker deleted"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "rememberMe": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Worker": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "_id": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "salary": {
+            "type": "string"
+          },
+          "position": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "contacts": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
