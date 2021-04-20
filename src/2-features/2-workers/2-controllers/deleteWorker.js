@@ -22,7 +22,7 @@ const deleteWorker = async (req, res) => {
     } catch (e) {
         res.status(500).json({
             resultCode: 1,
-            message: 'Yoops, something went wrong(delete board).'
+            message: 'Oops, something went wrong(delete board).'
         })
     }
 }

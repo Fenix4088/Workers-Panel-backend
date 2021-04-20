@@ -30,14 +30,14 @@ const register = async (req, res) => {
 
             res.status(201).json({
                 resultCode: 0,
-                message: 'Пользователь зарегистрирован'
+                message: 'Registration successful !'
             })
         }
     } catch (e) {
         console.log(e)
         res.status(500).json({
             resultCode: 1,
-            message: 'Что то пошло не так.Сервер не значет в чем проблема.'
+            message: 'Oops! Something wrong :-( '
         })
     }
 }

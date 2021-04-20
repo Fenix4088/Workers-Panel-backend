@@ -1,12 +1,12 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "test API",
+    "title": "Workers panel API",
     "version": "v1",
-    "description": "header === body",
+    "description": "Workers panel",
     "contact": {
-      "email": "kachanovski03@gmail.com",
-      "name": "Alexander Kachanovski"
+      "email": "fenix4088@gmail.com",
+      "name": "Yehor Pliasov"
     }
   },
   "externalDocs": {
@@ -43,7 +43,7 @@
               "example": {
                 "email": "string",
                 "password": "string",
-                "rememberMe": false
+                "rememberMe": "boolean"
               }
             }
           }

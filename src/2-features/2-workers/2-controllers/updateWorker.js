@@ -28,7 +28,7 @@ const updateWorker = async (req, res) => {
     } catch (e) {
         res.status(500).json({
             resultCode: 1,
-            message: 'Yoops, something went wrong(update board).'
+            message: 'Oops, something went wrong(update board).'
         })
     }
 }

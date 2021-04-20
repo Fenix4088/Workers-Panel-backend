@@ -11,12 +11,12 @@ const login = async (req, res) => {
         if (!user) {
             res.status(400).json({
                 resultCode: 1,
-                message: 'Неверный email или пароль'
+                message: 'Wrong email or password'
             })
         } else if (!(await bCrypt.compare(password, user?.password))) {
             res.status(400).json({
                 resultCode: 1,
-                message: 'Неверный email или пароль'
+                message: 'Wrong email or password'
             })
         } else {
 
@@ -31,7 +31,6 @@ const login = async (req, res) => {
                     data: {
                         id: user._id,
                         email: user?.email,
-                        rememberMe: user?.rememberMe,
                     },
                     resultCode: 0
                 });
@@ -39,7 +38,7 @@ const login = async (req, res) => {
     } catch (e) {
         res.status(500).json({
             resultCode: 1,
-            message: 'Что то пошло не так.Сервер не значет в чем проблема.'
+            message: 'Oops! Something wrong :-( '
         })
     }
 }

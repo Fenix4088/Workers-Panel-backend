@@ -18,12 +18,12 @@ const logOut = async (req, res) => {
         })
             .status(201).json({
             resultCode: 0,
-            message: 'Выход из аккаунта прошел успешно'
+            message: 'Logout successful, Bye !'
         })
     } catch (e) {
         res.status(500).json({
             resultCode: 1,
-            message: 'Что то пошло не так.Сервер не значет в чем проблема.'
+            message: 'Oops! Something wrong :-( '
         })
     }
 

@@ -3,7 +3,7 @@ const Worker = require('../1-models/Worker')
 const getWorkers = async (req, res) => {
 
     try {
-        const workers = await Worker.find()
+        const workers = await Worker.find().sort({updated: -1});
 
         res.json({
             resultCode: 0,
@@ -16,7 +16,7 @@ const getWorkers = async (req, res) => {
         (e) {
         res.json({
             resultCode: 1,
-            message: 'Yoops, something went wrong(getBoards)'
+            message: 'Oops, something went wrong(getBoards)'
         })
     }
 }
